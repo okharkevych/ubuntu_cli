@@ -55,7 +55,6 @@ class Timer:
         if timer_name:
             end_message = f'\n\nCountdown ended for {timer_name}...'
 
-        # presupposes you have 'spd-say' installed
         speech_command: List[str] = ['spd-say', f'{end_message}']
 
         print(f'{end_message}')
