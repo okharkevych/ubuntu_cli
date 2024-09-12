@@ -18,6 +18,7 @@ Below is a collection of such scripts.
 2. [Installation on Linux](README.md#installation-on-linux)
     * [Standard dependencies](README.md#standard-dependencies)
     * [Repository import](README.md#repository-import)
+    * [Project-specific dependencies](README.md#project-specific-dependencies)
 3. [Script descriptions](README.md#script-descriptions)
     * [timer](README.md#timer)
     * [update_sw](README.md#update_sw)
