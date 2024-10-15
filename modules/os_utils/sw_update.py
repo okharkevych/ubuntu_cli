@@ -10,5 +10,6 @@ def update_sw() -> None:
         'sudo apt-get update',
         'sudo apt-get upgrade -y',
         'sudo apt autoremove -y',
+        'flatpak update -y',
     ]
     run_terminal(commands)
