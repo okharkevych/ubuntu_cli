@@ -1,5 +1,5 @@
-from modules.sys_paths import ubuntu_cli_dir
-from modules.terminal import run_terminal
+from ubuntu_cli.modules.sys_paths import ubuntu_cli_dir
+from ubuntu_cli.modules.terminal import run_terminal
 
 timer: str = 'modules.timer.run_timer'
 commands: list[str] = [

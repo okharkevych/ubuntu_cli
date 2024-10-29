@@ -1,4 +1,4 @@
-from modules.terminal import run_terminal
+from ubuntu_cli.modules.terminal import run_terminal
 
 
 def update_sw() -> None:
