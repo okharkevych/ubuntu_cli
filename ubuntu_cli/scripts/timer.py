@@ -1,7 +1,7 @@
 from ubuntu_cli.modules.sys_paths import ubuntu_cli_dir
 from ubuntu_cli.modules.terminal import run_terminal
 
-timer: str = 'modules.timer.run_timer'
+timer: str = 'ubuntu_cli.modules.timer.run_timer'
 commands: list[str] = [
     f'cd {ubuntu_cli_dir}',
     f'python3 -m {timer}',
