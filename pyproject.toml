@@ -13,3 +13,8 @@ python = "^3.13"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+start = "ubuntu_cli.scripts.start_ubuntu_cli:main"
+os_sw_update = "ubuntu_cli.scripts.os_sw_update:update_sw"
+timer = "ubuntu_cli.scripts.timer:run_timer"
