@@ -17,7 +17,7 @@ def command_input_interface(prompt: str, available_scripts: list) -> None:
 
     while is_active:
         print(prompt)
-        command: str = input('>>> ')
+        command: str = input('\n>>> ')
 
         if command == 'q':
             is_active = False
@@ -53,9 +53,11 @@ def get_available_scripts(script_to_ignore: str) -> list:
 
 def create_input_prompt(available_scripts: list) -> str:
     prompt: str = (
-        'Welcome to UbuntuCLI! '
-        'Choose the script you\'d like to run by entering one of the commands '
-        'below. Alternatively, enter "q" to exit.\n' +
-        ''.join(f'\t{script}\n' for script in available_scripts)
+        'Welcome to UbuntuCLI!\n\n'
+        'Choose the script you\'d like to run from the list of available '
+        'commands.\n'
+        'Alternatively, enter "q" to exit. Available commands are listed '
+        'below:\n' +
+        ''.join(f'\n{script}' for script in available_scripts)
     )
     return prompt
