@@ -1,66 +1,93 @@
-# ubuntu_cli
-
-At the time of this repository creation, Ubuntu is my primary OS. 
-
-I also like using CLI, as well as automating my workflow. 
-
-This results in various scripts using Ubuntu Terminal as the primary interface.
-
-Below is a collection of such scripts.
-
-<div align=center margin=auto> 
-  <img src="images/timer_sample.png" width=80%>
-</div>
+# UbuntuCLI
 
 
 ## Table of Contents
-1. [Prerequisites](README.md#prerequisites)
-2. [Installation on Linux](README.md#installation-on-linux)
-    * [Standard dependencies](README.md#standard-dependencies)
-    * [Repository import](README.md#repository-import)
-    * [Project-specific dependencies](README.md#project-specific-dependencies)
-3. [Script descriptions](README.md#script-descriptions)
-    * [timer](README.md#timer)
-    * [update_sw](README.md#update_sw)
-3. [How to run](README.md#how-to-run)
+- [Introduction](#introduction)
+- [Sample-screenshots](#sample-screenshots)
+- [System-wide dependencies list](#system-wide-dependencies-list)
+- [Installation](#installation)
+    * [System-wide dependencies](#system-wide-dependencies)
+    * [Repository import](#repository-import)
+    * [Poetry initialization](#poetry-initialization)
+- [Script descriptions](#script-descriptions)
+    * [timer](#timer)
+    * [os_sw_update](#os_sw_update)
+- [How to run](#how-to-run)
 
 
-## Prerequisites
-To run the program, you need the following components installed:
+## Introduction
 
-**Standard dependencies**
-- Python 3.x
-- Git 
+At the time of this repository creation, Ubuntu is my primary OS. 
 
-**Project-specific dependencies**
-- speech-dispatcher (for the timer to announce the end of a countdown; should be preinstalled in Ubuntu 14.04+)
+I also like using CLI, as well as automating my workflow with Python and bash. 
+
+This results in creating various scripts that use Ubuntu Terminal as the 
+primary interface.
+
+UbuntuCLI is the collection of such scripts that can be used in a centralized 
+manner.
 
 
-## Installation on Linux
+## Sample screenshots
+<div align=center margin=auto> 
+  <img src="images/ubuntu_cli_greeting_sample.png" width=80%>
+  <p>UbuntuCLI initial greeting</p>
+</div>
+<div align=center margin=auto> 
+  <img src="images/timer_sample.png" width=80%>
+  <p>Example of timer script execution</p>
+</div>
 
-### Standard dependencies
-Please refer to the corresponding official sources for:
-- Python: https://www.python.org/downloads/
-- Git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
-### Repository import
-- Go to the directory you'd like to have this repository in and open the 
-directory in terminal
-- Enter the following command:
+## System-wide dependencies list
+You will need the following components installed:
 
-```
->>> git clone https://github.com/okharkevych/ubuntu_cli.git
-```
+| Name                | Description                                                                                                                    |
+|:--------------------|:-------------------------------------------------------------------------------------------------------------------------------|
+| `Python 3.13+`      | as the project is Python-based and was built with this specific version; backward compatibility is possible but not guaranteed |
+| `Git`               | to get the project repository from GitHub                                                                                      |
+| `Poetry`            | to run project script(s) and manage project-wide dependencies (if any)                                                         |
+| `speech-dispatcher` | for the timer to announce the end of a countdown; should be preinstalled in Ubuntu 14.04+                                      |
 
-### Project-specific dependencies
-Enter the following command:
+
+## Installation
+PLEASE NOTE: the instructions were written with Ubuntu OS in mind; the exact 
+actions/commands may differ on other systems.
+
+### System-wide dependencies
+Please refer to the corresponding official instructions for:
+- `Python`: https://www.python.org/downloads/
+- `Git`: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+- `Poetry`: https://python-poetry.org/docs/#installation
+
+To install the rest of the dependencies in this category, open terminal and 
+enter the following command:
 
 ```
 >>> sudo apt-get install -y speech-dispatcher
 ```
 
+### Repository import
+- Open the directory you'd like to download this repository to in terminal.
+- Enter the following command:
+
+```
+git clone https://github.com/okharkevych/ubuntu_cli.git
+```
+
+### Poetry initialization
+- A this point, it is required to set up an isolated virtual environment in 
+order to run the project script(s) and install the project-wide dependecies 
+(if any).
+- To proceed, open your 'ubuntu_cli' directory in terminal and enter the 
+following command:
+
+```
+poetry install
+```
 
 ## Script descriptions
+This section contains more information on each of the available scripts.
 
 ### timer
 - A simple CLI countdown tool
@@ -74,35 +101,28 @@ countdown
 and its text is voiced via text-to-speech tool to attract additional attention
 - The script is based on the code from https://www.udacity.com/blog/2021/09/create-a-timer-in-python-step-by-step-guide.html
 
-### update_sw
-- All the commands I use to update system components gathered in one place:
+### os_sw_update
+- Commands needed to update or refresh (my) system components and repositories, 
+all gathered in one place and executed sequentially:
 
 ```
-snap-store --quit
-sudo snap refresh
-sudo apt update
-sudo apt upgrade -y
-sudo apt-get update
-sudo apt-get upgrade -y
-sudo apt autoremove -y
+>>> snap-store --quit
+>>> sudo snap refresh
+>>> sudo apt update
+>>> sudo apt upgrade -y
+>>> sudo apt-get update
+>>> sudo apt-get upgrade -y
+>>> sudo apt autoremove -y
+>>> flatpak update -y
 ```
-- Most of the commands are commonly used ('refresh'/'update'/'upgrade'), as far 
-as I am aware.
-- The 'autoremove' command isn't 100% safe in this situation as you automatically 
-confirm the removal of all the dependencies marked as no longer used by the system; 
-there may be a situation where you want to keep a package installed as a dependency
-despite its main package having been deleted already. I haven't had any issues with
-autoremoving everything suggested; however, if you feel more comfortable checking
-the list of the packages to be removed, better remove that ' -y' next to 'autoremove'
-in modules/update_sw.py
-- The uncommon one among these commands is 'snap-store --quit'. On multiple occasions,
-my app/package updates have been interrupted or simply failed to start due to 
-Snap Store processes running in the background. Hence, this addition to the script.
+
+- Useful, given the fact that Ubuntu GUI usually falls short of being able to 
+update all the software from various sources by clicking one button.
+
 
 ## How to run
-- Open ubuntu_cli directory downloaded earlier in terminal
-- Enter the following command:
+- Open your 'ubuntu_cli' directory in terminal and enter the following command:
 
 ```
->>> python3 -m scripts.script_name
+poetry run start
 ```
