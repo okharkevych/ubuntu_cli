@@ -13,6 +13,7 @@
     * [timer](#timer)
     * [os_sw_update](#os_sw_update)
 - [How to run](#how-to-run)
+- [How to update](#how-to-update)
 
 
 ## Introduction
@@ -42,12 +43,12 @@ manner.
 ## System-wide dependencies list
 You will need the following components installed:
 
-| Name                | Description                                                                                                                    |
-|:--------------------|:-------------------------------------------------------------------------------------------------------------------------------|
-| `Python 3.13+`      | as the project is Python-based and was built with this specific version; backward compatibility is possible but not guaranteed |
-| `Git`               | to get the project repository from GitHub                                                                                      |
-| `Poetry`            | to run project script(s) and manage project-wide dependencies (if any)                                                         |
-| `speech-dispatcher` | for the timer to announce the end of a countdown; should be preinstalled in Ubuntu 14.04+                                      |
+| Name                | Description                                                                               |
+|:--------------------|:------------------------------------------------------------------------------------------|
+| `Python 3.10+`      | as the project is Python-based and is not guaranteed to support lower Python versions     |
+| `Git`               | to get the project repository from GitHub                                                 |
+| `Poetry`            | to run project script(s) and manage project-wide dependencies (if any)                    |
+| `speech-dispatcher` | for the timer to announce the end of a countdown; should be preinstalled in Ubuntu 14.04+ |
 
 
 ## Installation
@@ -125,4 +126,13 @@ update all the software from various sources by clicking one button.
 
 ```
 poetry run start
+```
+
+
+## How to update
+- To get the latest project changes from the GitHub repository, open your 
+'ubuntu_cli' directory in terminal and enter the following command:
+
+```
+git pull
 ```
